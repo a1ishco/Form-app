@@ -47,7 +47,7 @@ if(selectedOption!=setSelectedOption){
   },[locationCode])
 
 
-  
+
   return (
     <div className="custom-select">
       <div className="select-header" onClick={toggleDropdownNumber}>
