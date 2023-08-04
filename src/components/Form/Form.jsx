@@ -1,29 +1,33 @@
 import React, { useEffect, useState } from "react";
 import styles from "./styles.css";
 import Select from "../Select/Select";
+import Country from "../Country/Country";
 
-const Form = ({ countries, country  }) => {
+const Form = ({ countries, country }) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [number, setNumber] = useState("");
+
   const [selectedCountryOption, setselectedCountryOption] = useState("");
+
   const [errorName, setErrorName] = useState(null);
   const [errorMail, setErrorMail] = useState(null);
   const [errorNumber, setErrorNumber] = useState(null);
+
   const [locationName, setLocationName] = useState(null);
 
-  useEffect(() => {
-    if (Array.isArray(countries)) {
-      const dataAll = new Map(countries?.map((item) => [item.name, item]));
-      for (const [name, item] of dataAll) {
-        if (country == item.name) {
-          setLocationName(item?.name);
-          setselectedCountryOption(locationName);
-          break;
-        }
-      }
-    }
-  }, [countries]);
+  // useEffect(() => {
+  //   if (Array.isArray(countries)) {
+  //     const dataAll = new Map(countries?.map((item) => [item.name, item]));
+  //     for (const [name, item] of dataAll) {
+  //       if (country == item.name) {
+  //         setLocationName(item?.name);
+  //         setselectedCountryOption(locationName);
+  //         break;
+  //       }
+  //     }
+  //   }
+  // }, [countries]);
 
   function isValidEmail(email) {
     return /\S+@\S+\.\S+/.test(email);
@@ -87,7 +91,7 @@ const Form = ({ countries, country  }) => {
     if (number.length == 0 || errorNumber == true) {
       setErrorNumber(true);
     }
-    console.log(name, email, number, locationName);
+    console.log(name, email, number);
   };
 
   return (
@@ -166,9 +170,6 @@ const Form = ({ countries, country  }) => {
                         >
                           <div className="selectDiv">
                             <Select countries={countries} country={country} />
-                          <div className="listIcon">
-
-                          </div>
                           </div>
 
                           <input
@@ -187,7 +188,13 @@ const Form = ({ countries, country  }) => {
                         <label htmlFor="subject code">Country</label>
                       </div>
                       <div className="col-75">
-                        <select
+                        <div id="selectCountry">
+                          <div className="select-country">
+                            <Country countries={countries} country={country} />
+                          </div>
+                        </div>
+
+                        {/* <select
                           id="selectCountry"
                           value={locationName}
                           onChange={handleOptionChange}
@@ -196,7 +203,7 @@ const Form = ({ countries, country  }) => {
                             countries.map((item) => (
                               <option key={item.id}>{item.name}</option>
                             ))}
-                        </select>
+                        </select> */}
                       </div>
                     </div>
                     <p className="informText">

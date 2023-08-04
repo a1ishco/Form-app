@@ -3,12 +3,14 @@ import styles from "./styles.css";
 import Form from "../Form/Form";
 
 const CustomSelect = ({ countries, country }) => {
-  const [isOpenNumber, setIsOpenNumber] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
   const [locationCode, setLocationCode] = useState(null);
   const [locationAbr, setLocationAbr] = useState(null);
   const [selectedOption, setSelectedOption] = useState(locationCode);
   const [iconOpen, setIconOpen] = useState(true);
   const [dialConf , setDialConf] = useState(locationCode);
+
+
 
   useEffect(() => {
     if (Array.isArray(countries)) {
@@ -28,29 +30,27 @@ useEffect(()=>{
 
 },[country])
 
-  const toggleDropdownNumber = () => {
-    setIsOpenNumber(!isOpenNumber);
+  const toggleDropdown = () => {
+    setIsOpen(!isOpen);
     setIconOpen(!iconOpen)
   };
-  const handleOptionClickNumber = (option) => {
+  const handleOptionClick = (option) => {
     setSelectedOption(option);
-    setIsOpenNumber(false);
+    setIsOpen(false);
     setIconOpen(false)
     setLocationCode(selectedOption)
   };
 
   useEffect(()=>{
 if(selectedOption!=setSelectedOption){
+  console.log(selectedOption?.props.children[1]);
   setIconOpen(!iconOpen)
   setDialConf(dialConf);
 }
   },[locationCode])
-
-
-
   return (
     <div className="custom-select">
-      <div className="select-header" onClick={toggleDropdownNumber}>
+      <div className="select-header" onClick={toggleDropdown}>
         {selectedOption ? (
           selectedOption
         ) : (
@@ -71,7 +71,7 @@ if(selectedOption!=setSelectedOption){
               src="https://qmeter.net/_next/static/media/select_arrow.0be6d369.svg"
             />
       </div>
-      {isOpenNumber && (
+      {isOpen && (
         
         <ul className="select-options selectCode">
           {countries.map((option, index) => (
@@ -79,7 +79,7 @@ if(selectedOption!=setSelectedOption){
               className="optionLi"
               key={index}
               onClick={() =>
-                handleOptionClickNumber(
+                handleOptionClick(
               
                   <div className="optionIcon">
                     <img
@@ -93,7 +93,10 @@ if(selectedOption!=setSelectedOption){
                       alt={option.code}
                     />
                     {option.dial_code}
-                                     
+                    
+                   
+                    {setDialConf(option.dial_code)}
+                    
                   </div>
                 )
               }

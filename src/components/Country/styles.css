@@ -1,37 +1,37 @@
-.custom-select {
+.custom-select-country {
     position: relative;
-    width: 94px;
-    margin-left: -35px;
+    padding: 5px;
   }
   
-  .select-header {
+  .select-header-country {
+    padding-left: 5px;
     display: flex;
     cursor: pointer;
-    width: 75%;
+    width: 100%;
+    justify-content: space-between;
   }
   
-  .select-options {
-    margin-left: -10px;
+  .select-options-country {
+    margin-left: 0px;
     max-height: 150px;
     overflow-y: auto;
     list-style: none;
     padding: 0;
     position: absolute;
-    z-index: 1;
     top: 100%;
     left: 0;
-    width: 89%;
+    width: 100%;
     border: 1px solid #ccc;
     background-color: #fff;
   }
   
-  .select-options li {
+  .select-options-country li {
     padding: 10px;
     cursor: pointer;
     display: flex;
   }
   
-  .select-options li:hover {
+  .select-options-country li:hover {
     background-color: #f0f0f0;
   }
 
