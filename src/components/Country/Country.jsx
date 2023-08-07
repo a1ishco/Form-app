@@ -7,34 +7,27 @@ const Country = ({ countries, country }) => {
   const [locationName, setLocationName] = useState(null);
 
   const [selectedOption, setSelectedOption] = useState(country);
-  const [iconOpen, setIconOpen] = useState(false);
-
-
+  const [iconOpen, setIconOpen] = useState(true);
+  const [sendCountry, setSendCountry] = useState(locationName);
 
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
     setIconOpen(!iconOpen);
   };
+
   const handleOptionClick = (option) => {
     setSelectedOption(option);
     setIsOpen(false);
-    setIconOpen(false);
+    setIconOpen(true);
   };
 
-  useEffect(()=>{
-    if(selectedOption!=setSelectedOption){
-      setIconOpen(!iconOpen)
-    console.log(selectedOption?.props.children)
-    }
-      },[selectedOption])
-
-  useEffect(()=>{
-    setLocationName(country)
-  
-  },[country])
+  useEffect(() => {
+    setLocationName(country);
+    setSendCountry(locationName);
+    console.log(country, "- First Location");
+  }, [country]);
 
 
- 
   return (
     <div className="custom-select-country">
       <div className="select-header-country" onClick={toggleDropdown}>
@@ -57,7 +50,7 @@ const Country = ({ countries, country }) => {
               key={index}
               onClick={() =>
                 handleOptionClick(
-                  <div className="optionIcon">{option.name}</div>
+                option.name
                 )
               }
             >

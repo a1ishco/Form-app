@@ -72,10 +72,11 @@ label {
 }
 #col-2 {
   float: left;
-  width: 40% !important;
+  width: 400px !important;
+  height: 480px !important;
   padding: 25px;
   border: 1px solid gray;
-  border-radius: 5px;
+  border-radius: 10px;
 }
 
 @media screen and (max-width: 993px) {
@@ -88,13 +89,12 @@ label {
     width: 100% !important;
   }
   #col-2 {
-    width: 75% !important;
-  }
-  #col-2 {
-    margin-inline: 50px;
+    height: 480px;
+    width: 400px !important;
+    margin-inline: 160px;
     margin-top: 50px;
     padding: 50px;
-    padding-top: 30px;
+    padding-top: 10px;
   }
 
   .formcol1 h2 {
@@ -139,11 +139,12 @@ label {
 }
 
 #numberInput {
-  margin-right: -30px;
+  margin-left: 80px;
   width: 55%;
 }
 
 .buttonSubmit {
+  height: 48px;
   font-size: 15px;
   line-height: 18px;
   background: #354050;
@@ -209,4 +210,29 @@ label {
 
 .formcol1p{
   padding-top: 0px;
+}
+
+
+.buttonTitle{
+  display: grid;
+  text-align: center;
+}
+
+.buttonRow{
+  padding-left: 0px;
+}
+
+.col-2{
+padding: 0px;
+}
+
+.button-spinner{
+  margin-top: -3px;
+height: 25px !important;
+width: 25px !important;
+}
+
+.col-10{
+  margin-left: -35px;
+  padding: 0px;
 }

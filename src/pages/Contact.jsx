@@ -1,8 +1,11 @@
 import React from 'react'
+import Api from '../components/API/Api'
 
 const Contact = () => {
   return (
-    <div>Contact</div>
+    <div className="Contact">
+      <Api />
+    </div>
   )
 }
 

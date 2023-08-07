@@ -1,13 +1,29 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import styles from "./styles.css";
 import Select from "../Select/Select";
 import Country from "../Country/Country";
+
+import usa from "../../assets/country/United_States.png";
+import az from "../../assets/country/Azerbaijan.png";
+import tr from "../../assets/country/Turkey.png";
+import jordan from "../../assets/country/Jordan.png";
+import uae from "../../assets/country/United_Arab_Emirates.png";
+import pol from "../../assets/country/Poland.png";
+import kuw from "../../assets/country/Kuwait.png";
+import omn from "../../assets/country/Oman.png";
+import sar from "../../assets/country/Saudi_Arabia.png";
+import kz from "../../assets/country/Kazakhistan.png";
 
 const Form = ({ countries, country }) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [number, setNumber] = useState("");
 
+  const [imageName, setImageName] = useState("United_States.png");
+
+  const [buttonText, setButtonText] = useState(
+    <span>Claim Your Free Consultation Now</span>
+  );
   const [selectedCountryOption, setselectedCountryOption] = useState("");
 
   const [errorName, setErrorName] = useState(null);
@@ -28,6 +44,33 @@ const Form = ({ countries, country }) => {
   //     }
   //   }
   // }, [countries]);
+
+  const getBackgroundImage = () => {
+    switch (country) {
+      case "United States":
+        return `url(${usa})`;
+      case "Azerbaijan":
+        return `url(${az})`;
+        case 'Turkey':
+        return `url(${tr})`;
+        case 'United Arab Emirates':
+        return `url(${uae})`;
+        case 'Jordan':
+        return `url(${jordan})`;
+        case 'Poland':
+        return `url(${pol})`;
+        case 'Kazakhistan':
+        return `url(${kz})`;
+        case 'Kuwait':
+        return `url(${kuw})`;
+        case 'Oman':
+        return `url(${omn})`;
+        case 'Saudi Arabia':
+        return `url(${sar})`;
+      default:
+        return `url(${usa})`;
+    }
+  };
 
   function isValidEmail(email) {
     return /\S+@\S+\.\S+/.test(email);
@@ -91,7 +134,20 @@ const Form = ({ countries, country }) => {
     if (number.length == 0 || errorNumber == true) {
       setErrorNumber(true);
     }
-    console.log(name, email, number);
+    if (errorName == false && errorMail == false && errorNumber == false) {
+      setButtonText(
+        <div className="row buttonRow">
+          <div className="col-2">
+            <div
+              className="spinner-border text-secondary button-spinner"
+              role="status"
+            ></div>
+          </div>
+          <div className="col-10">Sending...</div>
+        </div>
+      );
+      console.log(name, email, number);
+    }
   };
 
   return (
@@ -124,7 +180,7 @@ const Form = ({ countries, country }) => {
               </div>
             </div>
 
-            <div className="column" id="col-2">
+            <div className="column" id="col-2" style={{backgroundImage:getBackgroundImage()}}>
               <div className="formcol2">
                 <div className="formInputs">
                   <form>
@@ -213,9 +269,7 @@ const Form = ({ countries, country }) => {
                   </form>
                   <div className="row">
                     <button className="buttonSubmit" onClick={submitCheck}>
-                      <div className="buttonTitle">
-                        <span>Claim Your Free Consultation Now</span>
-                      </div>
+                      <div className="buttonTitle">{buttonText}</div>
                     </button>
                   </div>
                 </div>
@@ -224,7 +278,6 @@ const Form = ({ countries, country }) => {
           </div>
         </div>
       </div>
-      <Select />
     </>
   );
 };
