@@ -1,11 +1,9 @@
-import Api from "../components/API/Api";
+import React from 'react'
 
-function Home() {
+const Home = () => {
   return (
-    <div className="mb-5">
-      <Api />
-    </div>
-  );
+    <div>Home</div>
+  )
 }
 
-export default Home;
+export default Home

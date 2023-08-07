@@ -1,18 +1,13 @@
-import React from "react";
-import { Route, Routes , BrowserRouter} from "react-router-dom";
-import "./App.css";
-import Home from "./pages/Home";
-import Contact from "./pages/Contact";
+
+import Api from './components/API/Api';
+
+import './App.css';
 
 function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Home />}>
-          <Route path="contact" element={<Contact />} />
-        </Route>
-      </Routes>
-    </BrowserRouter>
+    <div className="App">
+     <Api/>
+    </div>
   );
 }
 

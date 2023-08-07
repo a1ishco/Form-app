@@ -118,7 +118,7 @@ label {
 }
 
 .selectDiv {
-  margin-left: -50px;
+  margin-left: -33px;
   width: 10%;
   border: none;
   display: inline-block;
@@ -139,8 +139,8 @@ label {
 }
 
 #numberInput {
-  margin-left: 65px;
-  width: 62%;
+  margin-left: 80px;
+  width: 55%;
 }
 
 .buttonSubmit {
