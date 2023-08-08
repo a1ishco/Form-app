@@ -2,7 +2,9 @@
     margin-top: 0px;
 }
 
+
 .buttonSubmit {
+  width: 100%;
     height: 48px;
     font-size: 15px;
     line-height: 18px;
