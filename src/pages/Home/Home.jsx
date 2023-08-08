@@ -6,7 +6,7 @@ const Home = () => {
   return (
     <>
       <div className="container-fluid container-fluid-home">
-        <div className="container container-home">
+        
           <div className="row homerows">
             <div className="column" id="colhome-1">
               <div className="homecol1">
@@ -17,20 +17,18 @@ const Home = () => {
                       src="https://qmeter.net/_next/static/media/whatsapp.9496e9a2.svg"
                       alt=""
                       srcset=""
-                    />{" "}
-                    Its very fast and direct 24/7{" "}
+                    /> Its very fast and direct 24/7{" "}
                   </span>
                 </div>
                 <div className="homerow">
                   <h2>Send us your enquiry or request</h2>
                   <span className="spanHome">
-                    {" "}
+                    
                     <img
                       src="https://qmeter.net/_next/static/media/mail.ca834e40.svg"
                       alt=""
                       srcset=""
-                    />{" "}
-                    We are replying with 24 hours
+                    /> We are replying with 24 hours
                   </span>
                 </div>
 
@@ -43,14 +41,13 @@ const Home = () => {
               </div>
             </div>
             <div className="column columnHome" id="col-2">
-              <h2>Send us inquiries</h2>
-              <Form isTextareaVisible={true}/>
+              <h4 id="columnRightText">Send us inquiries</h4>
+              <Form isTextareaVisible={false}/>
               
               
             </div>
           </div>
         </div>
-      </div>
     </>
   );
 };

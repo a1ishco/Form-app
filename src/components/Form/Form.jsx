@@ -161,9 +161,11 @@ const Form = ({ isTextareaVisible }) => {
           <form>
             <div className="row">
               <div className="col-25">
-                <label id="labelInput" htmlFor="fname">
-                  Name
-                </label>
+                {isTextareaVisible && (
+                  <label id="labelInput" htmlFor="fname">
+                    Name
+                  </label>
+                )}
               </div>
               <div className="col-75">
                 <input
@@ -178,7 +180,7 @@ const Form = ({ isTextareaVisible }) => {
             </div>
             <div className="row">
               <div className="col-25">
-                <label htmlFor="email">Email</label>
+                {isTextareaVisible && <label htmlFor="email">Email</label>}
               </div>
               <div className="col-75">
                 <input
@@ -193,7 +195,9 @@ const Form = ({ isTextareaVisible }) => {
             </div>
             <div className="row">
               <div className="col-25">
-                <label htmlFor="subject code">Phone Number</label>
+                {isTextareaVisible && (
+                  <label htmlFor="subject code">Phone Number</label>
+                )}
               </div>
               <div className="col-75" id="numberEntry">
                 <div className={errorNumber ? "falseNumber " : "trueNumber"}>
@@ -214,7 +218,9 @@ const Form = ({ isTextareaVisible }) => {
             </div>
             <div className="row">
               <div className="col-25">
-                <label htmlFor="subject code">Country</label>
+                {isTextareaVisible && (
+                  <label htmlFor="subject code">Country</label>
+                )}
               </div>
               <div className="col-75">
                 <div id="selectCountry">
@@ -226,15 +232,15 @@ const Form = ({ isTextareaVisible }) => {
             </div>
           </form>
 
-          {isTextareaVisible && (
-              <textarea
-                name="comment"
-                className="form_comment mt-3"
-                id="formCommentDisplay"
-                placeholder="Share your experience here..."
-                rows="2"
-              />
-            )}
+          {(!isTextareaVisible) && (
+            <textarea
+              name="comment"
+              className="form_comment mt-3"
+              id="formCommentDisplay"
+              placeholder="Share your experience here..."
+              rows="2"
+            />
+          )}
 
           <Button onClick={submitCheck} buttonText={buttonText} />
         </div>

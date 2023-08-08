@@ -50,6 +50,7 @@
 
 
 #colhome-1 {
+  padding-left: 40px;
   float: right;
   width: 55% !important;
   margin-top: 50px;
@@ -62,14 +63,7 @@
     padding: 50px;
     width: 100% !important;
   }
-  #colhome-2 {
-    height: 480px;
-    width: 400px !important;
-    margin-inline: 160px;
-    margin-top: 50px;
-    padding: 50px;
-    padding-top: 10px;
-  }
+
 
 }
 @media screen and (max-width: 768px) {
@@ -78,16 +72,15 @@
   }
 }
 
-#col-2 {
-  margin-top: 15px !important;
 
-  float: left;
-  width: 400px !important;
-  height: 480px !important;
-  padding: 25px;
-}
-
-.columnHome{
+.columnHome{    
   border: 1px solid transparent;
 }
 
+#columnRightText{
+  font-weight: bold;
+}
+
+.row{
+  margin-top: 10px !important;
+}
