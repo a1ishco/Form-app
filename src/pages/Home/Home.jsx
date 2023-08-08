@@ -16,7 +16,7 @@ const Home = () => {
                     <img
                       src="https://qmeter.net/_next/static/media/whatsapp.9496e9a2.svg"
                       alt=""
-                      srcset=""
+                      srcSet=""
                     /> Its very fast and direct 24/7{" "}
                   </span>
                 </div>
@@ -27,7 +27,7 @@ const Home = () => {
                     <img
                       src="https://qmeter.net/_next/static/media/mail.ca834e40.svg"
                       alt=""
-                      srcset=""
+                      srcSet=""
                     /> We are replying with 24 hours
                   </span>
                 </div>

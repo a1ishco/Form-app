@@ -1,4 +1,3 @@
-import React, { useEffect, useState } from "react";
 import styles from "./styles.css"
 const Button = ({ onClick, buttonText }) => {
 
@@ -7,7 +6,7 @@ const Button = ({ onClick, buttonText }) => {
       <p className="informText">
         By filling out the form, you consent to the processing of personal data
       </p>
-      <div className="rdw buttonRow">
+      <div className="buttonRow">
         <button className="buttonSubmit" onClick={onClick}>
           <div className="buttonTitle">{buttonText}</div>
         </button>

@@ -30,6 +30,7 @@ const CustomSelect = ({ countries, country, onUpdate }) => {
     setIsOpen(!isOpen);
     setIconOpen(!iconOpen);
   };
+  
   const handleOptionClick = (option) => {
     setSelectedOption(option);
     setIsOpen(false);
@@ -37,23 +38,11 @@ const CustomSelect = ({ countries, country, onUpdate }) => {
     setLocationCode(selectedOption);
   };
 
-  // useEffect(()=>{
-  //   let handlerUl = (option) =>{
-  //     setIsOpen(false);
-  //     setIconOpen(false);
-  //     setLocationCode(selectedOption);
-  //   }
-  //   document.addEventListener("mousedown" , handlerUl)
-  //     })
-
   useEffect(() => {
-    if (selectedOption != setSelectedOption) {
-      // console.log(selectedOption?.props.children[1]);
-      setIconOpen(!iconOpen);
-      console.log(locationCode, "- First Code");
-      console.log(dialConf, "- Selected Code");
-    }
-  }, [locationCode]);
+    setIconOpen(!iconOpen);
+    console.log(locationCode, "- First Code");
+    console.log(dialConf, "- Selected Code");
+  }, [locationCode, selectedOption]);
 
   return (
     <>

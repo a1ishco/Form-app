@@ -2,78 +2,28 @@ import React, { useState } from "react";
 import styles from "./styles.css";
 import Select from "../Select/Select";
 import Country from "../Country/Country";
-import { useGlobalContext } from "../../components/Context/Context";
-
-import usa from "../../assets/country/United_States.png";
-import az from "../../assets/country/Azerbaijan.png";
-import tr from "../../assets/country/Turkey.png";
-import jordan from "../../assets/country/Jordan.png";
-import uae from "../../assets/country/United_Arab_Emirates.png";
-import pol from "../../assets/country/Poland.png";
-import kuw from "../../assets/country/Kuwait.png";
-import omn from "../../assets/country/Oman.png";
-import sar from "../../assets/country/Saudi_Arabia.png";
-import kz from "../../assets/country/Kazakhistan.png";
 import Button from "../Button/Button";
+
+import { useGlobalContext } from "../../components/Context/Context";
 
 const Form = ({ isTextareaVisible }) => {
   const { countries, country } = useGlobalContext();
 
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [number, setNumber] = useState("");
-  const [errorName, setErrorName] = useState(null);
-  const [errorMail, setErrorMail] = useState(null);
-  const [errorNumber, setErrorNumber] = useState(null);
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    number: "",
+  });
 
-  const [submitFinal, setSubmitFinal] = useState(false);
-  const [selectedCountryOption, setselectedCountryOption] = useState("");
-  const [locationName, setLocationName] = useState(null);
-  const [isDisplayed, setIsDisplayed] = useState(true);
+  const [errors, setErrors] = useState({
+    name: null,
+    email: null,
+    number: null,
+  });
 
   const [buttonText, setButtonText] = useState(
     <span>Claim Your Free Consultation Now</span>
   );
-
-  // useEffect(() => {
-  //   if (Array.isArray(countries)) {
-  //     const dataAll = new Map(countries?.map((item) => [item.name, item]));
-  //     for (const [name, item] of dataAll) {
-  //       if (country == item.name) {
-  //         setLocationName(item?.name);
-  //         setselectedCountryOption(locationName);
-  //         break;
-  //       }
-  //     }
-  //   }
-  // }, [countries]);
-
-  const getBackgroundImage = () => {
-    switch (country) {
-      case "United States":
-        return `url(${usa})`;
-      case "Azerbaijan":
-        return `url(${az})`;
-      case "Turkey":
-        return `url(${tr})`;
-      case "United Arab Emirates":
-        return `url(${uae})`;
-      case "Jordan":
-        return `url(${jordan})`;
-      case "Poland":
-        return `url(${pol})`;
-      case "Kazakhistan":
-        return `url(${kz})`;
-      case "Kuwait":
-        return `url(${kuw})`;
-      case "Oman":
-        return `url(${omn})`;
-      case "Saudi Arabia":
-        return `url(${sar})`;
-      default:
-        return `url(${az})`;
-    }
-  };
 
   function isValidEmail(email) {
     return /\S+@\S+\.\S+/.test(email);
@@ -83,64 +33,43 @@ const Form = ({ isTextareaVisible }) => {
     return /\S+ \S+/.test(name);
   }
 
-  const handleChangeMail = (mailEvent) => {
-    if (
-      !isValidEmail(mailEvent.target.value) ||
-      mailEvent.target.value.length == 0
-    ) {
-      setErrorMail(true);
-    } else {
-      setErrorMail(false);
-    }
+  const handleChange =
+    (field) =>
+    ({ target: { value } }) => {
+      let newErrors = { ...errors };
 
-    setEmail(mailEvent.target.value);
-  };
+      if (field === "name") {
+        newErrors.name = !isValidName(value) || value.length === 0;
+      } else if (field === "email") {
+        newErrors.email = !isValidEmail(value) || value.length === 0;
+      } else if (field === "number") {
+        newErrors.number =
+          value.length !== 0 && (value.length < 7 || value.length > 11);
+      }
 
-  const handleChangeName = (nameEvent) => {
-    if (
-      !isValidName(nameEvent.target.value) ||
-      nameEvent.target.value.length == 0
-    ) {
-      setErrorName(true);
-    } else {
-      setErrorName(false);
-    }
-
-    setName(nameEvent.target.value);
-  };
-
-  const handleChangeNumber = (numberEvent) => {
-    if (
-      numberEvent.target.value.length != 0 &&
-      numberEvent.target.value.length >= 7 &&
-      numberEvent.target.value.length <= 11
-    ) {
-      setErrorNumber(false);
-    } else {
-      setErrorNumber(true);
-    }
-    setNumber(numberEvent.target.value);
-  };
-
-  const handleOptionChange = (e) => {
-    setselectedCountryOption(e.target.value);
-    setLocationName(e.target.value);
-  };
+      setErrors(newErrors);
+      setFormData((prevData) => ({ ...prevData, [field]: value }));
+    };
 
   const submitCheck = () => {
-    if (name.length == 0 || errorName == true) {
-      setErrorName(true);
+    const { name, email, number } = formData;
+
+    if (!name || errors.name) {
+      setErrors((prevErrors) => ({ ...prevErrors, name: true }));
     }
-    if (email.length == 0 || errorMail == true) {
-      setErrorMail(true);
+    if (!email || errors.email) {
+      setErrors((prevErrors) => ({ ...prevErrors, email: true }));
     }
-    if (number.length == 0 || errorNumber == true) {
-      setErrorNumber(true);
+    if (!number || errors.number) {
+      setErrors((prevErrors) => ({ ...prevErrors, number: true }));
     }
-    if (errorName == false && errorMail == false && errorNumber == false) {
-      setSubmitFinal(true);
+    if (
+      errors.name === false &&
+      errors.email === false &&
+      errors.number === false
+    ) {
       setButtonText(
-        <div className="row buttonRow">
+        <div className="buttonRow">
           <div className="col-2">
             <div
               className="spinner-border text-secondary button-spinner"
@@ -171,10 +100,10 @@ const Form = ({ isTextareaVisible }) => {
                 <input
                   id="nameInput fname"
                   type="text"
-                  value={name}
-                  onChange={handleChangeName}
+                  value={formData.name}
+                  onChange={handleChange("name")}
                   placeholder=" Pietro Schirano"
-                  className={errorName ? "falseName" : "trueName"}
+                  className={errors.name ? "falseName" : "trueName"}
                 />
               </div>
             </div>
@@ -185,11 +114,11 @@ const Form = ({ isTextareaVisible }) => {
               <div className="col-75">
                 <input
                   id="emailInput lname"
-                  value={email}
+                  value={formData.email}
                   type="text"
-                  onChange={handleChangeMail}
+                  onChange={handleChange("email")}
                   placeholder=" example@qmeter.net"
-                  className={errorMail ? "falseEmail" : "trueEmail"}
+                  className={errors.email ? "falseEmail" : "trueEmail"}
                 />
               </div>
             </div>
@@ -200,7 +129,7 @@ const Form = ({ isTextareaVisible }) => {
                 )}
               </div>
               <div className="col-75" id="numberEntry">
-                <div className={errorNumber ? "falseNumber " : "trueNumber"}>
+                <div className={errors.number ? "falseNumber " : "trueNumber"}>
                   <div className="selectDiv">
                     <Select countries={countries} country={country} />
                   </div>
@@ -208,8 +137,8 @@ const Form = ({ isTextareaVisible }) => {
                   <input
                     id="numberInput"
                     type="tel"
-                    value={number}
-                    onChange={handleChangeNumber}
+                    value={formData.number}
+                    onChange={handleChange("number")}
                     placeholder="(__) ___-__-__"
                     className="numberInput"
                   />
@@ -232,13 +161,13 @@ const Form = ({ isTextareaVisible }) => {
             </div>
           </form>
 
-          {(!isTextareaVisible) && (
+          {!isTextareaVisible && (
             <textarea
               name="comment"
               className="form_comment mt-3"
               id="formCommentDisplay"
               placeholder="Share your experience here..."
-              rows="2"
+              rows="4"
             />
           )}
 

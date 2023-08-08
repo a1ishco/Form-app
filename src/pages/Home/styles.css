@@ -60,6 +60,7 @@
 @media screen and (max-width: 993px) {
 
   #colhome-1 {
+    text-align: center;
     padding: 50px;
     width: 100% !important;
   }
@@ -68,12 +69,13 @@
 }
 @media screen and (max-width: 768px) {
   #colhome-2 {
-    margin-inline: 80px;
+    margin-inline: 150px;
   }
 }
 
 
 .columnHome{    
+  margin-inline: auto;
   border: 1px solid transparent;
 }
 

@@ -136,7 +136,7 @@ const Form = ({ countries, country }) => {
     }
     if (errorName == false && errorMail == false && errorNumber == false) {
       setButtonText(
-        <div className="row buttonRow">
+        <div className="buttonRow">
           <div className="col-2">
             <div
               className="spinner-border text-secondary button-spinner"

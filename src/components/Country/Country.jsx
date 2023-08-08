@@ -19,7 +19,7 @@ const Country = ({ countries, country }) => {
     setLocationName(country);
     setSendCountry(locationName);
     console.log(country, "- First Location");
-  }, [country]);
+  }, [country, locationName]);
 
   const handleOptionClick = (option) => {
     console.log(option , "- Selected Country");

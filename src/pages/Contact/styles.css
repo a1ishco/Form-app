@@ -8,6 +8,7 @@
 }
 
 #col-2 {
+  margin-inline: auto;
   margin-top: 15px !important;
   float: left;
   width: 400px !important;
