@@ -1,0 +1,29 @@
+.buttonSide{
+    margin-top: 0px;
+}
+
+.buttonSubmit {
+    height: 48px;
+    font-size: 15px;
+    line-height: 18px;
+    color: #fff;
+    border-radius: 24px;
+    padding: 10px;
+    text-transform: uppercase;
+  }
+
+  .buttonTitle{
+    display: grid;
+    text-align: center;
+  }
+  
+  .buttonRow{
+    padding-left: 0px;
+  }
+  
+.informText {
+    margin-top: 20px;
+    display: flex;
+    font-size: 12px;
+    width: fit-content;
+  }

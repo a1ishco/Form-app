@@ -16,23 +16,20 @@ import sar from "../../assets/country/Saudi_Arabia.png";
 import kz from "../../assets/country/Kazakhistan.png";
 import Button from "../Button/Button";
 
-const Form = () => {
+const Form = ({ isTextareaVisible }) => {
   const { countries, country } = useGlobalContext();
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [number, setNumber] = useState("");
-
-  const [submitFinal, setSubmitFinal] = useState(false);
-
-
-  const [selectedCountryOption, setselectedCountryOption] = useState("");
-
   const [errorName, setErrorName] = useState(null);
   const [errorMail, setErrorMail] = useState(null);
   const [errorNumber, setErrorNumber] = useState(null);
 
+  const [submitFinal, setSubmitFinal] = useState(false);
+  const [selectedCountryOption, setselectedCountryOption] = useState("");
   const [locationName, setLocationName] = useState(null);
+  const [isDisplayed, setIsDisplayed] = useState(true);
 
   const [buttonText, setButtonText] = useState(
     <span>Claim Your Free Consultation Now</span>
@@ -57,21 +54,21 @@ const Form = () => {
         return `url(${usa})`;
       case "Azerbaijan":
         return `url(${az})`;
-        case 'Turkey':
+      case "Turkey":
         return `url(${tr})`;
-        case 'United Arab Emirates':
+      case "United Arab Emirates":
         return `url(${uae})`;
-        case 'Jordan':
+      case "Jordan":
         return `url(${jordan})`;
-        case 'Poland':
+      case "Poland":
         return `url(${pol})`;
-        case 'Kazakhistan':
+      case "Kazakhistan":
         return `url(${kz})`;
-        case 'Kuwait':
+      case "Kuwait":
         return `url(${kuw})`;
-        case 'Oman':
+      case "Oman":
         return `url(${omn})`;
-        case 'Saudi Arabia':
+      case "Saudi Arabia":
         return `url(${sar})`;
       default:
         return `url(${az})`;
@@ -141,7 +138,7 @@ const Form = () => {
       setErrorNumber(true);
     }
     if (errorName == false && errorMail == false && errorNumber == false) {
-      setSubmitFinal(true)
+      setSubmitFinal(true);
       setButtonText(
         <div className="row buttonRow">
           <div className="col-2">
@@ -157,87 +154,91 @@ const Form = () => {
     }
   };
 
-
-
   return (
     <>
-              <div className="formcol2">
-                <div className="formInputs">
-                  <form>
-                    <div className="row">
-                      <div className="col-25">
-                        <label id="labelInput" htmlFor="fname">Name</label>
-                      </div>
-                      <div className="col-75">
-                        <input
-                          id="nameInput fname"
-                          type="text"
-                          value={name}
-                          onChange={handleChangeName}
-                          placeholder=" Pietro Schirano"
-                          className={errorName ? "falseName" : "trueName"}
-                        />
-                      </div>
-                    </div>
-                    <div className="row">
-                      <div className="col-25">
-                        <label htmlFor="email">Email</label>
-                      </div>
-                      <div className="col-75">
-                        <input
-                          id="emailInput lname"
-                          value={email}
-                          type="text"
-                          onChange={handleChangeMail}
-                          placeholder=" example@qmeter.net"
-                          className={errorMail ? "falseEmail" : "trueEmail"}
-                        />
-                      </div>
-                    </div>
-                    <div className="row">
-                      <div className="col-25">
-                        <label htmlFor="subject code">Phone Number</label>
-                      </div>
-                      <div className="col-75" id="numberEntry">
-                        <div
-                          className={
-                            errorNumber ? "falseNumber " : "trueNumber"
-                          }
-                        >
-                          <div className="selectDiv">
-                            <Select countries={countries} country={country} />
-                          </div>
+      <div className="formcol2">
+        <div className="formInputs">
+          <form>
+            <div className="row">
+              <div className="col-25">
+                <label id="labelInput" htmlFor="fname">
+                  Name
+                </label>
+              </div>
+              <div className="col-75">
+                <input
+                  id="nameInput fname"
+                  type="text"
+                  value={name}
+                  onChange={handleChangeName}
+                  placeholder=" Pietro Schirano"
+                  className={errorName ? "falseName" : "trueName"}
+                />
+              </div>
+            </div>
+            <div className="row">
+              <div className="col-25">
+                <label htmlFor="email">Email</label>
+              </div>
+              <div className="col-75">
+                <input
+                  id="emailInput lname"
+                  value={email}
+                  type="text"
+                  onChange={handleChangeMail}
+                  placeholder=" example@qmeter.net"
+                  className={errorMail ? "falseEmail" : "trueEmail"}
+                />
+              </div>
+            </div>
+            <div className="row">
+              <div className="col-25">
+                <label htmlFor="subject code">Phone Number</label>
+              </div>
+              <div className="col-75" id="numberEntry">
+                <div className={errorNumber ? "falseNumber " : "trueNumber"}>
+                  <div className="selectDiv">
+                    <Select countries={countries} country={country} />
+                  </div>
 
-                          <input
-                            id="numberInput"
-                            type="tel"
-                            value={number}
-                            onChange={handleChangeNumber}
-                            placeholder="(__) ___-__-__"
-                            className="numberInput"
-                          />
-                        </div>
-                      </div>
-                    </div>
-                    <div className="row">
-                      <div className="col-25">
-                        <label htmlFor="subject code">Country</label>
-                      </div>
-                      <div className="col-75">
-                        <div id="selectCountry">
-                          <div className="select-country">
-                            <Country countries={countries} country={country} />
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    
-                  </form>
-
-                  <Button onClick={submitCheck} buttonText={buttonText}/>
-
+                  <input
+                    id="numberInput"
+                    type="tel"
+                    value={number}
+                    onChange={handleChangeNumber}
+                    placeholder="(__) ___-__-__"
+                    className="numberInput"
+                  />
                 </div>
               </div>
+            </div>
+            <div className="row">
+              <div className="col-25">
+                <label htmlFor="subject code">Country</label>
+              </div>
+              <div className="col-75">
+                <div id="selectCountry">
+                  <div className="select-country">
+                    <Country countries={countries} country={country} />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+
+          {isTextareaVisible && (
+              <textarea
+                name="comment"
+                className="form_comment mt-3"
+                id="formCommentDisplay"
+                placeholder="Share your experience here..."
+                rows="2"
+              />
+            )}
+
+          <Button onClick={submitCheck} buttonText={buttonText} />
+        </div>
+      </div>
     </>
   );
 };

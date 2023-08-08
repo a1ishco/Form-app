@@ -76,8 +76,8 @@ const Contact = () => {
               </div>
             </div>
 
-            <div className="column" id="col-2" style={{backgroundImage:getBackgroundImage()}}>
-              <Form />
+            <div className="column columnContact" id="col-2" style={{backgroundImage:getBackgroundImage()}}>
+              <Form isTextareaVisible={false}/>
               
             </div>
           </div>

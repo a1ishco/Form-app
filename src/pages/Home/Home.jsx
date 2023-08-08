@@ -42,14 +42,11 @@ const Home = () => {
                 </div>
               </div>
             </div>
-            <div className="column" id="col-2">
-              <Form />
-              {/* <textarea
-                name="comment"
-                class="form_comment"
-                placeholder="Share your experience here..."
-                rows="6"
-              ></textarea> */}
+            <div className="column columnHome" id="col-2">
+              <h2>Send us inquiries</h2>
+              <Form isTextareaVisible={true}/>
+              
+              
             </div>
           </div>
         </div>

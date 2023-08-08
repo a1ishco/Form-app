@@ -70,16 +70,6 @@ label {
   padding: 10px;
   padding-right: 40px;
 }
-#col-2 {
-  margin-top: 15px !important;
-
-  float: left;
-  width: 400px !important;
-  height: 480px !important;
-  padding: 25px;
-  border: 1px solid gray;
-  border-radius: 10px;
-}
 
 @media screen and (max-width: 993px) {
   input[type="submit"] {
@@ -117,12 +107,6 @@ label {
   }
 }
 
-.informText {
-  margin-top: 20px;
-  display: flex;
-  font-size: 12px;
-  width: fit-content;
-}
 
 .selectDiv {
   margin-left: -50px;
@@ -149,17 +133,6 @@ label {
   float: right;
   margin-left: 70px;
   width: 75%;
-}
-
-.buttonSubmit {
-  height: 48px;
-  font-size: 15px;
-  line-height: 18px;
-  background: #354050;
-  color: #fff;
-  border-radius: 24px;
-  padding: 10px;
-  text-transform: uppercase;
 }
 
 .formcol1 {
@@ -220,15 +193,6 @@ label {
   padding-top: 0px;
 }
 
-
-.buttonTitle{
-  display: grid;
-  text-align: center;
-}
-
-.buttonRow{
-  padding-left: 0px;
-}
 
 .col-2{
 padding: 0px;

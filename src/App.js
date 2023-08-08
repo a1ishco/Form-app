@@ -1,12 +1,12 @@
 import React from "react";
 import { GlobalProvider } from "./components/Context/Context";
-import Home from "./pages/Home/Home"; // Import your main component
+import Home from "./pages/Home/Home";
 import Contact from "./pages/Contact/Contact";
 
 function App() {
   return (
     <GlobalProvider>
-      <Contact />
+      <Home />
     </GlobalProvider>
   );
 }

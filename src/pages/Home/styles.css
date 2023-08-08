@@ -4,6 +4,10 @@
   font-family: "Sofia Pro", sans-serif;
 }
 
+.buttonSubmit{
+  background-color: #0f62fe;
+}
+
 .container-home {
   background-color: #fff;
 }
@@ -28,8 +32,9 @@
 }
 
 .homerows{
+  justify-content: space-between;
   display: flex !important;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
 }
 
 .spanHome{
@@ -80,6 +85,9 @@
   width: 400px !important;
   height: 480px !important;
   padding: 25px;
-  border: 1px solid gray;
-  border-radius: 10px;
 }
+
+.columnHome{
+  border: 1px solid transparent;
+}
+
