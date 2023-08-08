@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import styles from "./styles.css";
 import Select from "../Select/Select";
 import Country from "../Country/Country";
+import { useGlobalContext } from "../../components/Context/Context";
 
 import usa from "../../assets/country/United_States.png";
 import az from "../../assets/country/Azerbaijan.png";
@@ -13,17 +14,18 @@ import kuw from "../../assets/country/Kuwait.png";
 import omn from "../../assets/country/Oman.png";
 import sar from "../../assets/country/Saudi_Arabia.png";
 import kz from "../../assets/country/Kazakhistan.png";
+import Button from "../Button/Button";
 
-const Form = ({ countries, country }) => {
+const Form = () => {
+  const { countries, country } = useGlobalContext();
+
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [number, setNumber] = useState("");
 
-  const [imageName, setImageName] = useState("United_States.png");
+  const [submitFinal, setSubmitFinal] = useState(false);
 
-  const [buttonText, setButtonText] = useState(
-    <span>Claim Your Free Consultation Now</span>
-  );
+
   const [selectedCountryOption, setselectedCountryOption] = useState("");
 
   const [errorName, setErrorName] = useState(null);
@@ -31,6 +33,10 @@ const Form = ({ countries, country }) => {
   const [errorNumber, setErrorNumber] = useState(null);
 
   const [locationName, setLocationName] = useState(null);
+
+  const [buttonText, setButtonText] = useState(
+    <span>Claim Your Free Consultation Now</span>
+  );
 
   // useEffect(() => {
   //   if (Array.isArray(countries)) {
@@ -135,6 +141,7 @@ const Form = ({ countries, country }) => {
       setErrorNumber(true);
     }
     if (errorName == false && errorMail == false && errorNumber == false) {
+      setSubmitFinal(true)
       setButtonText(
         <div className="row buttonRow">
           <div className="col-2">
@@ -150,43 +157,16 @@ const Form = ({ countries, country }) => {
     }
   };
 
+
+
   return (
     <>
-      <div className="container-fluid">
-        <div className="container">
-          <div className="row formsrow">
-            <div className="column" id="col-1">
-              <div className="formcol1">
-                <h2>
-                  Transform your
-                  <br />
-                  <span>Customer Experience </span>
-                </h2>
-                <div className="container formcol1p">
-                  <p>
-                    Get callback from our professionals to receive a free
-                    consultation and define a customized solution for your
-                    business needs. <br />
-                    We have demonstrated experience in this field and are ready{" "}
-                    <br />
-                    to support you
-                  </p>
-                  <div className="dotsDiv">
-                    <div className="dotsImg">
-                      <div className="dotsIndex"></div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="column" id="col-2" style={{backgroundImage:getBackgroundImage()}}>
               <div className="formcol2">
                 <div className="formInputs">
                   <form>
                     <div className="row">
                       <div className="col-25">
-                        <label htmlFor="fname">Name</label>
+                        <label id="labelInput" htmlFor="fname">Name</label>
                       </div>
                       <div className="col-75">
                         <input
@@ -249,35 +229,15 @@ const Form = ({ countries, country }) => {
                             <Country countries={countries} country={country} />
                           </div>
                         </div>
-
-                        {/* <select
-                          id="selectCountry"
-                          value={locationName}
-                          onChange={handleOptionChange}
-                        >
-                          {Array.isArray(countries) &&
-                            countries.map((item) => (
-                              <option key={item.id}>{item.name}</option>
-                            ))}
-                        </select> */}
                       </div>
                     </div>
-                    <p className="informText">
-                      By filling out the form, you consent to the processing of
-                      personal data
-                    </p>
+                    
                   </form>
-                  <div className="row">
-                    <button className="buttonSubmit" onClick={submitCheck}>
-                      <div className="buttonTitle">{buttonText}</div>
-                    </button>
-                  </div>
+
+                  <Button onClick={submitCheck} buttonText={buttonText}/>
+
                 </div>
               </div>
-            </div>
-          </div>
-        </div>
-      </div>
     </>
   );
 };

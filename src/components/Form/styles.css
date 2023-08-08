@@ -4,7 +4,7 @@
   font-family: "Sofia Pro", sans-serif;
 }
 
-.container-fluid{
+.container-fluid-form{
 background: linear-gradient(269.85deg,#f5f6f8 0.12%,#f4f5f7 99.86%);
 }
 
@@ -52,7 +52,7 @@ label {
   font-size: 14px;
 }
 
-.container {
+.container-form {
   border-radius: 5px;
   background-color: #f2f2f2;
   padding: 20px;
@@ -71,6 +71,8 @@ label {
   padding-right: 40px;
 }
 #col-2 {
+  margin-top: 15px !important;
+
   float: left;
   width: 400px !important;
   height: 480px !important;
@@ -109,6 +111,11 @@ label {
     font-size: 18px !important;
   }
 }
+@media screen and (max-width: 768px) {
+  #col-2 {
+    margin-inline: 50px;
+  }
+}
 
 .informText {
   margin-top: 20px;
@@ -139,8 +146,9 @@ label {
 }
 
 #numberInput {
-  margin-left: 65px;
-  width: 62%;
+  float: right;
+  margin-left: 70px;
+  width: 75%;
 }
 
 .buttonSubmit {

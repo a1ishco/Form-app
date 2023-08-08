@@ -14,7 +14,7 @@ import omn from "../../assets/country/Oman.png";
 import sar from "../../assets/country/Saudi_Arabia.png";
 import kz from "../../assets/country/Kazakhistan.png";
 
-const Form1 = ({ countries, country }) => {
+const Form = ({ countries, country }) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [number, setNumber] = useState("");
@@ -22,7 +22,7 @@ const Form1 = ({ countries, country }) => {
   const [imageName, setImageName] = useState("United_States.png");
 
   const [buttonText, setButtonText] = useState(
-    <span>Claim Your Free Consultation Now </span>
+    <span>Claim Your Free Consultation Now</span>
   );
   const [selectedCountryOption, setselectedCountryOption] = useState("");
 
@@ -68,7 +68,7 @@ const Form1 = ({ countries, country }) => {
         case 'Saudi Arabia':
         return `url(${sar})`;
       default:
-        return `url(${usa})`;
+        return `url(${az})`;
     }
   };
 
@@ -150,13 +150,40 @@ const Form1 = ({ countries, country }) => {
     }
   };
 
+
+
   return (
     <>
-
+      <div className="container-fluid">
+        <div className="container">
+          <div className="row formsrow">
+            <div className="column" id="col-1">
+              <div className="formcol1">
+                <h2>
+                  Transform your
+                  <br />
+                  <span>Customer Experience </span>
+                </h2>
+                <div className="container formcol1p">
+                  <p>
+                    Get callback from our professionals to receive a free
+                    consultation and define a customized solution for your
+                    business needs. <br />
+                    We have demonstrated experience in this field and are ready{" "}
+                    <br />
+                    to support you
+                  </p>
+                  <div className="dotsDiv">
+                    <div className="dotsImg">
+                      <div className="dotsIndex"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
 
             <div className="column" id="col-2" style={{backgroundImage:getBackgroundImage()}}>
               <div className="formcol2">
-                
                 <div className="formInputs">
                   <form>
                     <div className="row">
@@ -250,8 +277,11 @@ const Form1 = ({ countries, country }) => {
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+      </div>
     </>
   );
 };
 
-export default Form1;
+export default Form;

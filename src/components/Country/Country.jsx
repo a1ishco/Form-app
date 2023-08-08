@@ -15,18 +15,38 @@ const Country = ({ countries, country }) => {
     setIconOpen(!iconOpen);
   };
 
-  const handleOptionClick = (option) => {
-    setSelectedOption(option);
-    setIsOpen(false);
-    setIconOpen(true);
-  };
-
   useEffect(() => {
     setLocationName(country);
     setSendCountry(locationName);
     console.log(country, "- First Location");
   }, [country]);
 
+  const handleOptionClick = (option) => {
+    console.log(option , "- Selected Country");
+    setSelectedOption(option);
+    setIsOpen(false);
+    setIconOpen(true);
+  };
+
+  const handleOptionMouseDown = (e) => {
+    e.stopPropagation();
+  };
+
+  useEffect(() => {
+    const closeOut = (e) => {
+      if (!e.target.closest(".custom-select-country")) {
+        setIsOpen(false);
+      }
+    };
+
+    if (isOpen) {
+      document.addEventListener("mousedown", closeOut);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", closeOut);
+    };
+  }, [isOpen]);
 
   return (
     <div className="custom-select-country">
@@ -48,11 +68,8 @@ const Country = ({ countries, country }) => {
             <li
               className="optionLi"
               key={index}
-              onClick={() =>
-                handleOptionClick(
-                option.name
-                )
-              }
+              onClick={() => handleOptionClick(option.name)}
+              onMouseDown={(e) => handleOptionMouseDown(e, option.name)}
             >
               <div className="optionIcon">{option.name}</div>
             </li>

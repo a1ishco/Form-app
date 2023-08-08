@@ -57,7 +57,7 @@ const CustomSelect = ({ countries, country, onUpdate }) => {
 
   return (
     <>
-      <div className="custom-select">
+      <div className="custom-select-code">
         <div className="select-header" onClick={toggleDropdown}>
           {selectedOption ? (
             selectedOption

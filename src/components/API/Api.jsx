@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { createContext, useEffect, useState } from "react";
 import Form from "../Form/Form";
 import Select from "../Select/Select";
+
 
 function Api() {
   const [countries, setCountries] = useState([]);
@@ -32,7 +33,7 @@ function Api() {
   return (
     <>
       <div>
-        <Form countries={countries} country={country} />
+        <Form />
       </div>
     </>
   );

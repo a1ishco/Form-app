@@ -1,13 +1,13 @@
-
-import Api from './components/API/Api';
-
-import './App.css';
+import React from "react";
+import { GlobalProvider } from "./components/Context/Context";
+import Home from "./pages/Home/Home"; // Import your main component
+import Contact from "./pages/Contact/Contact";
 
 function App() {
   return (
-    <div className="App">
-     <Api/>
-    </div>
+    <GlobalProvider>
+      <Contact />
+    </GlobalProvider>
   );
 }
 
