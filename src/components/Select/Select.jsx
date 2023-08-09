@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import styles from "./styles.css";
-import Form from "../Form/Form";
 
 const CustomSelect = ({ countries, country, onUpdate }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -30,7 +29,7 @@ const CustomSelect = ({ countries, country, onUpdate }) => {
     setIsOpen(!isOpen);
     setIconOpen(!iconOpen);
   };
-  
+
   const handleOptionClick = (option) => {
     setSelectedOption(option);
     setIsOpen(false);

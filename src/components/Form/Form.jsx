@@ -9,10 +9,11 @@ import { useGlobalContext } from "../../components/Context/Context";
 const Form = ({ isTextareaVisible }) => {
   const { countries, country } = useGlobalContext();
 
-  const [formData, setFormData] = useState({
+  const [formDatas, setFormDatas] = useState({
     name: "",
     email: "",
     number: "",
+    text:"",
   });
 
   const [errors, setErrors] = useState({
@@ -48,11 +49,11 @@ const Form = ({ isTextareaVisible }) => {
       }
 
       setErrors(newErrors);
-      setFormData((prevData) => ({ ...prevData, [field]: value }));
+      setFormDatas((prevData) => ({ ...prevData, [field]: value }));
     };
 
   const submitCheck = () => {
-    const { name, email, number } = formData;
+    const { name, email, number, text } = formDatas;
 
     if (!name || errors.name) {
       setErrors((prevErrors) => ({ ...prevErrors, name: true }));
@@ -64,9 +65,7 @@ const Form = ({ isTextareaVisible }) => {
       setErrors((prevErrors) => ({ ...prevErrors, number: true }));
     }
     if (
-      errors.name === false &&
-      errors.email === false &&
-      errors.number === false
+      errors.name === false && errors.email === false && errors.number === false
     ) {
       setButtonText(
         <div className="buttonRow">
@@ -79,7 +78,7 @@ const Form = ({ isTextareaVisible }) => {
           <div className="col-10">Sending...</div>
         </div>
       );
-      console.log(name, email, number);
+      console.log(name, email, number, text);
     }
   };
 
@@ -100,7 +99,7 @@ const Form = ({ isTextareaVisible }) => {
                 <input
                   id="nameInput fname"
                   type="text"
-                  value={formData.name}
+                  value={formDatas.name}
                   onChange={handleChange("name")}
                   placeholder=" Pietro Schirano"
                   className={errors.name ? "falseName" : "trueName"}
@@ -114,7 +113,7 @@ const Form = ({ isTextareaVisible }) => {
               <div className="col-75">
                 <input
                   id="emailInput lname"
-                  value={formData.email}
+                  value={formDatas.email}
                   type="text"
                   onChange={handleChange("email")}
                   placeholder=" example@qmeter.net"
@@ -137,7 +136,7 @@ const Form = ({ isTextareaVisible }) => {
                   <input
                     id="numberInput"
                     type="tel"
-                    value={formData.number}
+                    value={formDatas.number}
                     onChange={handleChange("number")}
                     placeholder="(__) ___-__-__"
                     className="numberInput"
@@ -168,6 +167,8 @@ const Form = ({ isTextareaVisible }) => {
               id="formCommentDisplay"
               placeholder="Share your experience here..."
               rows="4"
+              value={formDatas.text}
+              onChange={handleChange("text")}
             />
           )}
 
